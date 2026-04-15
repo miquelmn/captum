@@ -122,7 +122,8 @@ class InputXGradient(GradientAttribution):
         )
 
         attributions = tuple(
-            input * gradient for input, gradient in zip(inputs_tuple, gradients)
+            input * gradient for input, gradient in zip(inputs_tuple, gradients) if
+            gradient is not None
         )
 
         undo_gradient_requirements(inputs_tuple, gradient_mask)

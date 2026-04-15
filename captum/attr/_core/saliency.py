@@ -134,7 +134,7 @@ class Saliency(GradientAttribution):
             self.forward_func, inputs_tuple, target, additional_forward_args
         )
         if abs:
-            attributions = tuple(torch.abs(gradient) for gradient in gradients)
+            attributions = tuple(torch.abs(gradient) for gradient in gradients if gradient is not None)
         else:
             attributions = gradients
         undo_gradient_requirements(inputs_tuple, gradient_mask)

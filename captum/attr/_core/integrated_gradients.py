@@ -376,6 +376,7 @@ class IntegratedGradients(GradientAttribution):
             grad.contiguous().view(n_steps, -1)
             * torch.tensor(step_sizes).float().view(n_steps, 1).to(grad.device)
             for grad in grads
+            if grad is not None
         ]
 
         # aggregates across all steps for each tensor in the input tuple

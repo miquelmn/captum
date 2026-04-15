@@ -333,6 +333,7 @@ class DeepLift(GradientAttribution):
                         for input, baseline, gradient in zip(
                             inputs_tuple, baselines, gradients
                         )
+                        if gradient is not None
                     )
                 else:
                     attributions = gradients
